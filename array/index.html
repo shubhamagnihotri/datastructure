@@ -1,0 +1,225 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        
+        body {
+          font-family: "Lato", sans-serif;
+        }
+        
+        /* Fixed sidenav, full height */
+        .sidenav {
+          height: 100%;
+          width: 200px;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          padding-top: 20px;
+        }
+        
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a, .dropdown-btn {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 20px;
+          color: #818181;
+          display: block;
+          border: none;
+          background: none;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+          outline: none;
+        }
+        
+        /* On mouse-over */
+        .sidenav a:hover, .dropdown-btn:hover {
+          color: #f1f1f1;
+        }
+        
+        /* Main content */
+        .main {
+          margin-left: 200px; /* Same as the width of the sidenav */
+          font-size: 20px; /* Increased text to enable scrolling */
+          padding: 0px 10px;
+        }
+        
+        /* Add an active class to the active dropdown button */
+        .active {
+          background-color: green;
+          color: white;
+        }
+        
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+          display: none;
+          background-color: #262626;
+          padding-left: 8px;
+        }
+        
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+          float: right;
+          padding-right: 8px;
+        }
+        
+        /* Some media queries for responsiveness */
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+        @media only screen and (max-width: 600px) {
+            .sidenav {
+                /* width: 10px; */
+                display: none;
+            }
+            .main{
+                /* margin-left:10px; */
+                width: 100%;
+                display: inline-grid;
+            }
+        }
+        input {
+            width: 100%;
+        }
+        input[type=button]{
+            background: black;
+            color: white;
+            font-weight: 900;
+        }
+        .example {
+            display: block;
+            margin: 1em 0em;
+            padding: 0.6em;
+            background: #2c220a;
+            border: 0.4em solid #eee;
+            color: white;
+        }
+        .example:hover {
+            background: #0e1524;
+        }
+        .example h3 {
+            margin-bottom: 0.3em;
+        }
+
+        pre.prettyprint {
+            margin: 0em;
+            padding: 0em;
+            whitespace: pre-line !important;
+        }
+        .element {color:#9b2c90}
+        .attribute {color:#b15714}
+        .value {color: #2736b1}
+
+        .add .element:before {content: "<"}
+        </style>
+</head>
+
+<body>
+    <div class="sidenav">
+        <a href="#about">BIG O </a>
+        <a href="#services">DS ARRAY - #1</a>
+        <!-- <a href="#clients">Clients</a>
+        <a href="#contact">Contact</a> -->
+        <!-- <button class="dropdown-btn">Dropdown 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+        <a href="#contact">Search</a> -->
+      </div>
+      
+      <div class="main">
+        <h2>Here I am going to show u.</h2>
+         <h2>How you can make your own Array without using array.</h2>
+        <p>Some of array property i implemented here like : push,pop,delete.
+        </p>
+        <p>You guys, can refer this and implement more function according to 
+            your requirement
+        </p>
+        <!-- <p>This sidebar is of full height (100%) and always shown.</p>
+        <p>Some random text..</p> -->
+        <span class="example add">
+            <pre>
+                <code>
+                    class myArray{
+                        constructor(){
+                            this.arrayElements={};
+                            this.length=0;
+                        }
+                        get(index=null){
+                            if(index){
+                                return this.arrayElements[index];
+                            }
+                            return this.arrayElements
+                        }
+                        push(value){
+                            this.arrayElements[this.length]=value;
+                            this.length ++;
+                            return this.arrayElements;
+                        }
+                        pop(){
+                            if(this.length == 0){
+                                return undefined;
+                            }
+                            const lastItem = this.arrayElements[this.length-1];
+                            delete this.arrayElements[this.length-1];
+                            this.length --;
+                            return lastItem;
+                        }
+                        deleteAtIndex(index){
+                            if(index >= this.length){
+                                return undefined;
+                            }
+                            const itemvalue = this.arrayElements[index]
+                            this.shiftIndex(index)
+                            return itemvalue;
+                        }
+        
+                        shiftIndex(index){
+                            for(let i =index; i < this.length - 1; i++){
+                                let nextIndex = Number(i) + 1
+                            
+                                this.arrayElements[i] = this.arrayElements[nextIndex]
+                            }
+                            delete this.arrayElements[this.length-1];
+                            this.length --; 
+                        }
+        
+                    }
+                </code>
+            </pre>
+        </span>
+        <span class="example add">
+        <div id="arrayValue"></div>
+        </span>
+
+        <form>
+            <label for="fname">Push Item In Array</label>
+            <input type="text" id="fname" name="fname">
+            <input type="button" id="pushdata" value="PUSH IN Array"/>
+        </form>
+      
+        <form>
+            <label for="fname">Remove at index</label>
+            <input type="text" id="removeFname" name="removeFname">
+            <input type="button" id="deleteAtIndex" value="Delete at index"/>
+        </form>
+
+        <form>
+            <label for="fname">POP From Array</label>
+
+            <input type="button" id="popdata" value="POP IN Array"/>
+        </form>
+      </div>
+</body>
+
+<script src="index.js"></script>
+</html>
